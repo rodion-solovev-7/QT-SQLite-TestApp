@@ -1,3 +1,4 @@
 /test_db.sqlite
 __pycache__/
 .idea/
+/venv/
