@@ -40,11 +40,6 @@ class ProductsDataAccess:
             session: Session
             return map(Product.asdict, session.query(Product).all())
 
-    def count(self) -> int:
-        with make_session() as session:
-            session: Session
-            return session.query(Product).count_by_product_id()
-
 
 class ComponentsDataAccess:
     def add_single(self, data: dict):
@@ -80,8 +75,3 @@ class ComponentsDataAccess:
             session: Session
             records = session.query(Component).filter_by(product_id=product_id).all()
             return map(Component.asdict, records)
-
-    def count_by_product_id(self, product_id: int) -> int:
-        with make_session() as session:
-            session: Session
-            return session.query(Component).filter_by(product_id=product_id).count()
